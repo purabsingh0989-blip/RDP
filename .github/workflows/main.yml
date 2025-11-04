@@ -1,15 +1,12 @@
 name: RDP
 
-
 on:
   workflow_dispatch:
-
 
 jobs:
   secure-rdp:
     runs-on: windows-latest
     timeout-minutes: 3600
-
 
     steps:
       - name: Configure Core RDP Settings
@@ -24,8 +21,6 @@ jobs:
                              
           # Remove any existing rule with the same name to avoid duplication
           netsh advfirewall firewall delete rule name="RDP-Tailscale"
-
-         
 
           # For testing, allow any incoming connection on port 3389
           netsh advfirewall firewall add rule name="RDP-Tailscale" `
@@ -104,7 +99,6 @@ jobs:
               exit 1
           }
           Write-Host "TCP connectivity successful!"
-
 
       - name: Maintain Connection
 
